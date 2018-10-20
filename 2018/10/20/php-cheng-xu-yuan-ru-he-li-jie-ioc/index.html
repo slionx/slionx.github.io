@@ -559,47 +559,69 @@ class UsbDiskWriter implements IDeviceWriter
 <li><p>充分、完整、简单</p>
 </li>
 <li><p>策略与实现分离</p>
-<pre><code>*   策略组件负责上下文相关决策，解读信息的语义和含义，将众多不同结果合并或选择参数值
-
-*   实现组件负责执行定义完整的算法，不需要作出与上下文相关的决策。上下文和解释是外部的，通常由传递给组件的参数提供。
-</code></pre></li>
+<blockquote>
+<p>  策略组件负责上下文相关决策，解读信息的语义和含义，将众多不同结果合并或选择参数值</p>
+</blockquote>
+<blockquote>
+<p>  实现组件负责执行定义完整的算法，不需要作出与上下文相关的决策。上下文和解释是外部的，通常由传递给组件的参数提供。</p>
+</blockquote>
+</li>
 <li><p>接口与实现分离</p>
-<pre><code>*   接口部分定义了组件提供的功能以及如何使用该组件。组件的客户端可以访问该接口。
-
-*   实现部分包含实现组件提供的功能的实际代码，还可能包含仅供组件内部使用的函数和数据结构。组件的客户端不能访问其实现部分。
-</code></pre></li>
+<blockquote>
+<p>  接口部分定义了组件提供的功能以及如何使用该组件。组件的客户端可以访问该接口。</p>
+</blockquote>
+<blockquote>
+<p>  实现部分包含实现组件提供的功能的实际代码，还可能包含仅供组件内部使用的函数和数据结构。组件的客户端不能访问其实现部分。</p>
+</blockquote>
+</li>
 <li><p>单个引用点</p>
-<pre><code>*   软件系统中的任何元素都应只声明和定义一次，避免不一致性问题。
-10. 分而治之
-</code></pre></li>
+<blockquote>
+<p>  软件系统中的任何元素都应只声明和定义一次，避免不一致性问题。</p>
+</blockquote>
+</li>
+<li><p>分而治之</p>
+</li>
 </ol>
 <h2 id="软件架构的非功能特性"><a href="#软件架构的非功能特性" class="headerlink" title="软件架构的非功能特性"></a>软件架构的非功能特性</h2><ol>
 <li><p>可修改性</p>
-<pre><code>*   可维护性
-
-*   可扩展性
-
-*   重组
-
-*   可移植性
-</code></pre></li>
+<blockquote>
+<p>  可维护性</p>
+</blockquote>
+<blockquote>
+<p>  可扩展性</p>
+</blockquote>
+<blockquote>
+<p>  重组</p>
+</blockquote>
+<blockquote>
+<p>  可移植性</p>
+</blockquote>
+</li>
 <li><p>互操作性</p>
-<pre><code>*   与其它系统或环境交互
-</code></pre></li>
+<blockquote>
+<p>  与其它系统或环境交互</p>
+</blockquote>
+</li>
 <li><p>效率</p>
 </li>
 <li><p>可靠性</p>
-<pre><code>*   容错：发生错误时确保行为正确并自行修复
-
-*   健壮性：对应用程序进行保护，抵御错误的使用方式和无效输入，确保发生意外错误时处于指定状态。
-</code></pre></li>
+<blockquote>
+<p>  容错：发生错误时确保行为正确并自行修复</p>
+</blockquote>
+<blockquote>
+<p>  健壮性：对应用程序进行保护，抵御错误的使用方式和无效输入，确保发生意外错误时处于指定状态。</p>
+</blockquote>
+</li>
 <li><p>可测试性</p>
 </li>
 <li><p>可重用性</p>
-<pre><code>*   通过重用开发软件
-
-*   开发软件时考虑重用
-</code></pre></li>
+<blockquote>
+<p>  通过重用开发软件</p>
+</blockquote>
+<blockquote>
+<p>  开发软件时考虑重用</p>
+</blockquote>
+</li>
 </ol>
 
             </div>
