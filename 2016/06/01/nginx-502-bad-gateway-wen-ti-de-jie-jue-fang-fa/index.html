@@ -5,8 +5,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="hexo command, Slionx">
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex">
+    <meta name="keywords" content="Nginx 502 bad gateway问题的解决方法, Slionx">
+    <meta name="description" content="Nginx 502 Bad Gateway的含义是请求的PHP-CGI已经执行，但是由于某种原因（一般是读取资源的问题）没有执行完毕而导致PHP-CGI进程终止，一般来说Nginx 502 Bad Gateway和php-fpm.conf的">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -14,7 +14,7 @@
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <title>hexo command | Slionx</title>
+    <title>Nginx 502 bad gateway问题的解决方法 | Slionx</title>
     <link rel="icon" type="image/png" href="/favicon.ico">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/font-awesome.min.css">
@@ -218,13 +218,13 @@
 
 
 
-<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/9.jpg')">
+<div class="bg-cover post-cover" style="background-image: url('/medias/featureimages/4.jpg')">
     <div class="container">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
                     <div class="description center-align post-title">
-                        hexo command
+                        Nginx 502 bad gateway问题的解决方法
                     </div>
                 </div>
             </div>
@@ -244,32 +244,61 @@
             
             <div class="post-info">
                 
+                <span class="post-cate">
+                    <i class="fa fa-bookmark fa-fw icon-category"></i>
+                    
+                    <a href="/categories/Hexo教程/" class="post-category" target="_blank">
+                        Hexo教程
+                    </a>
+                    
+                </span>
+                
 
                 <span class="post-date">
-                    <i class="fa fa-clock-o fa-fw"></i>2018-10-17
+                    <i class="fa fa-clock-o fa-fw"></i>2016-06-01
                 </span>
             </div>
         </div>
         <hr>
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span>
-</code></pre>
-<h3 id="Create-a-new-Types"><a href="#Create-a-new-Types" class="headerlink" title="Create a new Types"></a>Create a new Types</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"new Types"</span> 
-</code></pre>
-<h3 id="Create-a-new-tags"><a href="#Create-a-new-tags" class="headerlink" title="Create a new tags"></a>Create a new tags</h3><pre class=" language-bash"><code class="language-bash">$ hexo new <span class="token string">"new tags"</span> 
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class=" language-bash"><code class="language-bash">$ hexo server
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class=" language-bash"><code class="language-bash">$ hexo generate
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class=" language-bash"><code class="language-bash">$ hexo deploy
-</code></pre>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+                <p>Nginx 502 Bad Gateway的含义是请求的PHP-CGI已经执行，但是由于某种原因（一般是读取资源的问题）没有执行完毕而导致PHP-CGI进程终止，一般来说Nginx 502 Bad Gateway和php-fpm.conf的设置有关。<br>lnmp架构在处理php时，nginx直接调取后端的php-fpm服务，如果nginx的请求量偏高，我们又没有给php-fpm配置足够的子进程，那么php-fpm就会资源耗尽，一旦资源耗尽nginx找不到php-fpm就会出现502错误，</p>
+<p>常见的原因可能是php-cgi进程数不够用、php执行时间长（mysql慢）、或者是php-cgi进程死掉，都会出现502错误。</p>
+<ol>
+<li><p>在安装好的环境中，运行一段时间出现502问题，一般是因为默认php-cgi进程是5个，可能因为phpcgi进程不够用而造成502，需要修改/usr/local/php/etc/php-fpm.conf 将其中的max_children值适当增加。</p>
+</li>
+<li><p>php执行超时，修改/usr/local/php/etc/php.ini 将max_execution_time 改为300</p>
+</li>
+<li><p>磁盘空间不足，可以使用 # df -h命令查看磁盘使用量</p>
+</li>
+<li><p>php-cgi进程死掉了。</p>
+</li>
+<li><p>因为nginx找不到php-fpm了，所以报错，一般是fastcgi_pass后面的路径配置错误了，后面可以是socket或者是ip:port</p>
+</li>
+</ol>
+<p>我们可以借助nginx的错误日志来进行排查vim /usr/local/nginx/logs/nginx_error.log  我们也可以给日志定义级别vim/usr/local/nginx/conf/nginx.conf 找到error_log，默认是crit最严谨的就行，也可以改成debug显示的信息最全面，但是很容易撑爆我们的磁盘。</p>
+<h4 id="通常的排查方法如下："><a href="#通常的排查方法如下：" class="headerlink" title="通常的排查方法如下："></a>通常的排查方法如下：</h4><p>1、查看php fastcgi的进程数（max_children值）</p>
+<p><code># netstat -anop | grep php-cgi | wc -l</code><br><code># netstat -anpo | grep php-fpm | wc -l</code></p>
+<p>假如显示是5</p>
+<p>2、查看当前进程<br><code># ps aux | grep php-fpm</code> 观察fastcgi/php-fpm进程数,假如使用的进程数等于或高于5个，说明需要增加。</p>
+<p>3、调整/usr/local/php/etc/php-fpm.conf 的相关设置</p>
+<p>pm.max_children = 5<br>request_terminate_timeout = 60</p>
+<p>max_children最多5个进程，按照每个进程20MB内存，最多100MB。也就是1分钟。max_children增多，则php-cgi的进程多了就会处理的很快，排队的请求就会很少。 但是设置max_children也需要根据服务器的性能进行设定，一般来说一台服务器正常情况下每一个php-cgi所耗费的内存在20M左右。根据自己服务器购买的内存来实际决定。<br>request_terminate_timeout执行的时间为60秒，request_terminate_timeout值可以根据服务器的性能进行设定。一般来说性能越好你可以设置越高，20分钟-30分钟都可以。</p>
+<p>4、部分PHP程序的执行时间超过了Nginx的等待时间，可以适当增加nginx.conf配置文件中FastCGI的timeout时间，例如：</p>
+<p>http<br>{<br>……<br>fastcgi_connect_timeout 300;<br>fastcgi_send_timeout 300;<br>fastcgi_read_timeout 300;<br>……<br>}</p>
+<hr>
+<h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><p>检查语法是否正常<br>[root@linux ~]#/usr/local/nginx/sbin/nginx -t</p>
+<p>重新加载配置文件<br>[root@linux~]# /usr/local/nginx/sbin/nginx-s reload<br>[root@linux~]# /etc/init.d/nginx reload</p>
+<p>检查nginx是那个用户跑的<br>[root@linux~]# ps aux |grep nginx<br>编辑php-fpm文件<br>我们要在这个php-fpm文件里面设置nginx的用户主，跟组这样才不会显示502</p>
+<p>配置完之后重启php-fpm<br>[root@linux~]# /etc/init.d/php-fpm restart</p>
+<p>php 5.4中php-fpm 的重启、终止操作命令:</p>
+<p>service nginx restart</p>
+<p>service php-fpm restart</p>
+<p>查看php运行目录命令：<br>which php<br>/usr/bin/php</p>
+<p>查看php-fpm进程数：<br>ps aux | grep -c php-fpm</p>
+<p>查看运行内存<br>/usr/bin/php  -i|grep mem</p>
+<p>重启php-fpm<br>/etc/init.d/php-fpm restart</p>
+<p>在phpinfo()输出内容可以看到php相关配置。<br>Loaded Configuration File /etc/php.ini</p>
 
             </div>
             <hr/>
@@ -408,7 +437,7 @@
                     <span class="reprint-tip">转载请注明: </span>
                     <a href="https://slionx.github.io" class="b-link-green">Slionx</a>
                     <i class="fa fa-angle-right fa-lg fa-fw text-color"></i>
-                    <a href="/2018/10/17/hexo-command/" class="b-link-green">hexo command</a>
+                    <a href="/2016/06/01/nginx-502-bad-gateway-wen-ti-de-jie-jue-fang-fa/" class="b-link-green">Nginx 502 bad gateway问题的解决方法</a>
                 </p>
             </div>
         </div>
@@ -428,24 +457,20 @@
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">上一篇</div>
             <div class="card">
-                <a href="/2018/10/20/php-cheng-xu-yuan-ru-he-li-jie-ioc/">
+                <a href="/2018/10/17/hexo-command/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="PHP程序员如何理解IoC">
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="hexo command">
                         
-                        <span class="card-title">PHP程序员如何理解IoC</span>
+                        <span class="card-title">hexo command</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
-                    <div class="summary">思想
-思想是解决问题的根本思想必须转换成习惯构建一套完整的思想体系是开发能力成熟的标志——《简单之美》（前言）
-
-
-“成功的软件项目就是那些提交产物达到或超出客户的预期的项目，而且开发过程符合时间和费用上的要求，结果在面对变化和调整时有弹性</div>
+                    <div class="summary">Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hex</div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-20
+                            <i class="fa fa-clock-o fa-fw icon-date"></i>2018-10-17
                         </span>
                         <span class="publish-author">
                             
@@ -461,7 +486,7 @@
         
         
         <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">下一篇</div>
+            <div class="article-badge right-badge text-color">本篇</div>
             <div class="card">
                 <a href="/2016/06/01/nginx-502-bad-gateway-wen-ti-de-jie-jue-fang-fa/">
                     <div class="card-image">
@@ -490,6 +515,7 @@
                         </span>
                     </div>
                 </div>
+
                 
             </div>
         </div>
